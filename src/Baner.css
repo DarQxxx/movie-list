@@ -1,0 +1,87 @@
+.baner{
+    align-items: center;
+}
+
+.baner__desc{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 537px;
+    justify-content: center;
+    background-color: black;
+    z-index: -100;
+    align-items: center;
+
+}
+
+.baner__desc__info{
+    width: 865px;
+    z-index: 100;
+}
+
+.baner__desc__infoTitle{
+    font-size: 30px;
+    max-width: 526px;
+    width: 100%;
+    color: white;
+    z-index: 100;
+
+}
+
+.baner__desc__infoDesc{
+max-width: 526px;
+width: 100%;
+color: white;
+z-index: 100;
+
+}
+
+.baner__descBgimg{
+    top:0;
+    height: 537px;
+    width: 865px;
+    max-width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 0;
+    background-position-y: 23.0%;
+    opacity: 80%;
+
+    
+}
+
+.baner__descBgimg::after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom: 0;
+    width: 100%;
+    height: 537px;
+    background: linear-gradient(
+        180deg,#000,rgba(0,0,0,.001) 26.7%,rgba(0,0,0,.001) 64%,#000 100%),linear-gradient(
+        90deg,#000,rgba(0,0,0,.001) 12%,transparent 82.41%,#000 100%);
+        z-index: 100;
+}
+
+.baner__topMovies{
+ display: flex;
+ justify-content: center;
+ z-index: 100;
+ margin-top: -100px;
+}
+
+.baner__topMoviesImgs{
+    margin-left: 30px;
+}
+
+.baner__topMoviesImgs:first-child{
+    margin-left: 0;
+}
+
+.baner__topMoviesImgs > img {
+    width: 143px;
+}
