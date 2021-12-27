@@ -1,5 +1,6 @@
 .baner{
     align-items: center;
+
 }
 
 .baner__desc{
@@ -15,7 +16,7 @@
 }
 
 .baner__desc__info{
-    width: 865px;
+    width: 1065px;
     z-index: 100;
 }
 
@@ -39,7 +40,7 @@ z-index: 100;
 .baner__descBgimg{
     top:0;
     height: 537px;
-    width: 865px;
+    width: 1065px;
     max-width: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -69,19 +70,56 @@ z-index: 100;
 
 .baner__topMovies{
  display: flex;
- justify-content: center;
  z-index: 100;
- margin-top: -100px;
+ margin: -60px auto  0 auto;
+ width: 1105px;
+ overflow:hidden;
+ position: relative;
+ 
+
 }
 
+.baner__topMovies__prevBtn{
+    content: "";
+    position: absolute;
+    left: 5px;
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+
+.baner__topMovies__nextBtn{
+    content: "";
+    position: absolute;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+
 .baner__topMoviesImgs{
-    margin-left: 30px;
+    margin-left: 40px;
+    transition: transform 0.4s ease-in-out;
+
 }
 
 .baner__topMoviesImgs:first-child{
     margin-left: 0;
+    padding-left: 20px;
 }
 
 .baner__topMoviesImgs > img {
-    width: 143px;
+    width: 181px;
+}
+
+.baner__topMoviesImgs:hover > img {
+    cursor: pointer;
 }
