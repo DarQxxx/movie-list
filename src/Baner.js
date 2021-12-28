@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import "./Baner.css"
 import useAxiosAttach from './Hooks/useAxiosAttach'
-import useAxiosReplace from './Hooks/useAxiosReplace'
+import "./Bootstrap.css"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 function Baner() {
     const [page, setPage] = useState(1)
@@ -22,7 +23,7 @@ function Baner() {
     }, [])
 
     useEffect(() => {
-        if (popularData.length > 0)
+        if (popularData.length > 0 && popularData.length <= 20)
         setActualMovieId(popularData[0].id)
 
     }, [popularData.length])
@@ -41,8 +42,6 @@ function Baner() {
             })
     }
       }, [actualMovieId])
-
-      console.log(actualMovieData)
 
 
     function handleNextBtn(){
@@ -78,9 +77,14 @@ function Baner() {
                     <div className="baner__desc__infoTitle">
                         {actualMovieData.title}
                     </div>
-                    <div className="baner__desc__infoDesc">
-                        {actualMovieData.overview.slice(0, 150) + "..."}
+                    <div className="baner__desc__infoProperties">
+                        <div className="baner__desc__infoProperties__originalTitle">{actualMovieData.original_title}</div>
+                        {actualMovieData.runtime !== 0 ? (<div className="baner__desc__infoProperties__runtime ml-20px">{`${Math.floor(actualMovieData.runtime/60)} godz. ${actualMovieData.runtime - (Math.floor(actualMovieData.runtime/60) * 60)} min.`}</div>) : (<div className="baner__desc__infoProperties__runtime ml-20px">? godz. ? min.</div>)}
+                        <div className="baner__desc__infoProperties__year ml-20px">{actualMovieData.release_date.slice(0, 4)}</div>
                     </div>
+                   {actualMovieData.overview !== "" && <div className="baner__desc__infoDesc">
+                        {actualMovieData.overview.slice(0, 150) + "..."}
+                    </div>}
                 </div>
 
                 <div className="baner__descBgimg" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w780/${actualMovieData.backdrop_path})`}}>
@@ -88,13 +92,14 @@ function Baner() {
             </div>
             <div className="baner__topMovies" >
             {popularData.map((movie, index) => (
-                <div style={{transform: `translateX(${-221 * counter}px)`}} onClick={() => {setActualMovieId(movie.id)}} className="baner__topMoviesImgs" key={index}>
-                    <img  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
+                <div style={{transform: `translateX(${-223 * counter}px)`}} className="baner__topMoviesImgs" key={index}>
+                    <img onClick={() => {setActualMovieId(movie.id)}} className={movie.id === actualMovieId ? "baner__topMoviesImgs--border" : "" }  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
+                    <div className="baner__topMoviesImgs__bottomTitle">{movie.original_title}</div>
                 </div>
             ))}
             
-            {counter > 0 &&  <div className="baner__topMovies__prevBtn" onClick={handlePrevBtn}></div> }
-            <div className="baner__topMovies__nextBtn" onClick={handleNextBtn}></div>
+            {counter > 0 &&  <div className="baner__topMovies__prevBtn" onClick={handlePrevBtn}><FaChevronLeft/></div> }
+            <div className="baner__topMovies__nextBtn" onClick={handleNextBtn}><FaChevronRight/></div>
             </div>            
         </div>
     )

@@ -21,12 +21,29 @@
 }
 
 .baner__desc__infoTitle{
-    font-size: 30px;
+    font-size: 2.3vw;
     max-width: 526px;
     width: 100%;
     color: white;
     z-index: 100;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 80px;
 
+}
+
+.baner__desc__infoProperties{
+    color: white;
+    display: flex;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 
 .baner__desc__infoDesc{
@@ -71,55 +88,78 @@ z-index: 100;
 .baner__topMovies{
  display: flex;
  z-index: 100;
- margin: -60px auto  0 auto;
+ margin: -135px auto  0 auto;
  width: 1105px;
  overflow:hidden;
  position: relative;
- 
 
 }
 
 .baner__topMovies__prevBtn{
-    content: "";
-    position: absolute;
-    left: 5px;
-    height: 30px;
-    width: 30px;
-    background-color: red;
-    top: 50%;
+    left: 0px;
     transform: translateY(-50%);
-    border-radius: 50%;
 }
 
 
 .baner__topMovies__nextBtn{
-    content: "";
-    position: absolute;
-    right: 5px;
+    right: 0px;
+    transform: translateY(-50%);
+}
+
+.baner__topMovies__nextBtn, .baner__topMovies__prevBtn{
+    border-radius: 50%;
+    text-align: center;
+    line-height: 220%;
+    top: 136px;
     height: 30px;
     width: 30px;
-    background-color: red;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 217, 0);
+
+}
+
+.baner__topMovies__prevBtn:hover, .baner__topMovies__nextBtn:hover{
+    cursor: pointer;
+    background-color:rgb(255, 225, 53);
+    color: rgb(58, 58, 58);
 }
 
 
 .baner__topMoviesImgs{
     margin-left: 40px;
-    transition: transform 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    height: 332px;
+    width: 183px;
 
+
+}
+.baner__topMoviesImgs__bottomTitle{
+    color: rgb(48, 48, 48);
+    margin-top: 10px;
+    text-align: center;
+    overflow: hidden;
+    user-select: none;
+    text-overflow: ellipsis;
 }
 
 .baner__topMoviesImgs:first-child{
-    margin-left: 0;
-    padding-left: 20px;
+    margin-left: 15px;
 }
 
 .baner__topMoviesImgs > img {
-    width: 181px;
+    width: 179px;
+    border: 2px solid transparent;
+    height: 268px;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+}
+
+.baner__topMoviesImgs--border{
+    border: solid 2px rgb(255, 217, 0) !important;
 }
 
 .baner__topMoviesImgs:hover > img {
     cursor: pointer;
+
 }
