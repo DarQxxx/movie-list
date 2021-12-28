@@ -135,12 +135,16 @@ z-index: 100;
 
 }
 .baner__topMoviesImgs__bottomTitle{
-    color: rgb(48, 48, 48);
     margin-top: 10px;
     text-align: center;
     overflow: hidden;
     user-select: none;
     text-overflow: ellipsis;
+}
+
+.baner__topMoviesImgs__bottomTitle > a{
+    color: rgb(48, 48, 48);
+    text-decoration: none;
 }
 
 .baner__topMoviesImgs:first-child{

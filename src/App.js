@@ -1,13 +1,21 @@
 import './App.css';
 import Homepage from './Homepage';
+import {
+  BrowserRouter as Router,
+  Routes as Switch,
+  Route,
+} from "react-router-dom";
+import Movie from './Movie';
 
 function App() {
-  console.log(window.scrollY)
 
   return (
-    <div className="App">
-    <Homepage></Homepage>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" element={<Homepage/>}/>
+        <Route path="/:movieId" element={<Movie/>}/>
+      </Switch>
+    </Router>
   );
 }
 

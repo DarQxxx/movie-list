@@ -4,6 +4,7 @@ import "./Baner.css"
 import useAxiosAttach from './Hooks/useAxiosAttach'
 import "./Bootstrap.css"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 function Baner() {
     const [page, setPage] = useState(1)
@@ -94,7 +95,7 @@ function Baner() {
             {popularData.map((movie, index) => (
                 <div style={{transform: `translateX(${-223 * counter}px)`}} className="baner__topMoviesImgs" key={index}>
                     <img onClick={() => {setActualMovieId(movie.id)}} className={movie.id === actualMovieId ? "baner__topMoviesImgs--border" : "" }  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
-                    <div className="baner__topMoviesImgs__bottomTitle">{movie.original_title}</div>
+                    <div className="baner__topMoviesImgs__bottomTitle"><Link to={`/${movie.id}`} >{movie.original_title}</Link></div>
                 </div>
             ))}
             
