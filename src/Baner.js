@@ -29,6 +29,7 @@ function Baner() {
 
     }, [popularData.length])
 
+
     useEffect(() => {
         if(actualMovieId !==null){
             axios

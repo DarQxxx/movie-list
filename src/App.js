@@ -6,11 +6,15 @@ import {
   Route,
 } from "react-router-dom";
 import Movie from './Movie';
+import Header from './Header'
 
 function App() {
 
   return (
+
     <Router>
+    <Header></Header>
+
       <Switch>
         <Route path="/" element={<Homepage/>}/>
         <Route path="/:movieId" element={<Movie/>}/>
