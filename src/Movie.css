@@ -1,5 +1,6 @@
 .movie{
     width: 100%;
+    font-family: Roboto;
 }
 
 .movie__top{
@@ -42,10 +43,79 @@
 }
 
 .movie__desc{
-    width: 1065px;
+    width: 965px;
     z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+    margin-bottom: 60px;
 }
+
+.movie__descTitle{
+    font-size: 50px;
+    font-weight: 700;
+    width: 700px;
+}
+
+.movie__desc__titleRelease{
+    display: flex;
+}
+
+.movie__desc__titleRelease__release{
+    margin-left: 30px;
+}
+
+.movie__desc__votes{
+    width: 70px;
+    margin-top: 30px;
+    display: flex;
+}
+
+.movie__desc__votesAverage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+.movie__desc__votesAverage--icon{
+    height: 40px;
+    margin-right: 5px;
+}
+.movie__desc__votesCount{
+    display: flex;
+    align-items: center;
+    color:rgb(255, 255, 255);
+    opacity: 0.6;
+    font-size: 14px;
+    justify-content: center;
+    line-height: 12px;
+}
+
+.movie__desc__votesAverage--icon{
+    color: rgb(255, 217, 0);
+}
+
+
+.movie__bot{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 
 .movie__info{
     display: flex;
+    width: 965px;
+    margin-top: 30px;
 }
+
+.movie__info__image > img{
+    width: 200px;
+    height: 285px;
+}
+
+.movie__info__overview{
+    line-height: 30px;
+    width: 50%;
+}
+
