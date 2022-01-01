@@ -4,12 +4,15 @@ import { useParams } from 'react-router-dom'
 import './Movie.css'
 import './Bootstrap.css'
 import { FaStar, FaUserAlt } from 'react-icons/fa'
+import { NoBackpackSharp } from '@mui/icons-material'
 
 function Movie () {
   const params = useParams()
   const [movieData, setMovieData] = useState(null)
   const [movieCreditsCrew, setMovieCreditsCrew] = useState(null)
   const [movieCreditsCast, setMovieCreditsCast] = useState(null)
+  const months = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"]
+  const [isShowMore, setIsShowMore] = useState(false)
 
   useEffect(() => {
     if (params.movieId !== null) {
@@ -36,11 +39,17 @@ function Movie () {
           console.log(err)
         })
     }
+
+    return () => {
+      setIsShowMore(false)
+    }
   }, [])
 
-  console.log(movieData)
-  console.log(movieCreditsCast)
-  console.log(movieCreditsCast)
+  function handleShowMore(){
+    setIsShowMore(!isShowMore);
+  }
+
+
   if (movieData !== null && movieCreditsCrew !== null && movieCreditsCast !==null)
     return (
       <div className='movie'>
@@ -84,8 +93,12 @@ function Movie () {
               />
             </div>
             <div className="movie__info__overview ml-35px">
-            <div className='movie__info__overviewDesc '>{movieData.overview}</div>
-            <div className="movie__info__overviewDirecting">{movieCreditsCrew.map((movie, index) => (<div>e</div>))}</div>
+            <div className='movie__info__overviewDesc '>{movieData.overview.length > 240 ? (<div>{isShowMore ? (`${movieData.overview}`) : (`${movieData.overview.slice(0, 240)}...`)}<span className="movie__info__overviewDesc--showMore ml-20px" onClick={handleShowMore}>{isShowMore ? (`Pokaż mniej`) : (`Pokaż więcej`)}</span></div>) : (<div>{movieData.overview}</div>)}</div>
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">reżyseria:</span> {movieCreditsCrew.map((movie, index) => (movie.job === "Director" && <div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
+            {/*<div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">scenariusz:</span> {movieCreditsCrew.map((movie, index) => (movie.job === "Screenplay" && <div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>*/}
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">produkcja:</span> {movieData.production_countries.map((movie, index) => (<div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">gatunki:</span> {movieData.genres.map((movie, index) => (<div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">premiera:</span> {`${movieData.release_date.slice(8,10)} ${months[movieData.release_date.slice(5,7)-1]} ${movieData.release_date.slice(0,4)}`}</div>
             </div>
             
           </div>
