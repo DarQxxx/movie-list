@@ -49,6 +49,8 @@ function Movie () {
     setIsShowMore(!isShowMore);
   }
 
+  console.log(movieData)
+
 
   if (movieData !== null && movieCreditsCrew !== null && movieCreditsCast !==null)
     return (
@@ -86,14 +88,14 @@ function Movie () {
           </div>
         </div>
         <div className='movie__bot'>
-          <div className='movie__info'>
+          <div className='movie__info movie__info--hideRwd'>
             <div className='movie__info__image'>
               <img
                 src={`https://image.tmdb.org/t/p/w300/${movieData.poster_path}`}
               />
             </div>
             <div className="movie__info__overview ml-35px">
-            <div className='movie__info__overviewDesc '>{movieData.overview.length > 240 ? (<div>{isShowMore ? (`${movieData.overview}`) : (`${movieData.overview.slice(0, 240)}...`)}<span className="movie__info__overviewDesc--showMore ml-20px" onClick={handleShowMore}>{isShowMore ? (`Pokaż mniej`) : (`Pokaż więcej`)}</span></div>) : (<div>{movieData.overview}</div>)}</div>
+            {movieData.overview ==="" ? (<div className="movie__info__overviewDesc">Niestety dla tego filmu nie ma opisu w bazie TMDB (The Movie Data Base). Jeśli chcesz dowiedzieć się więcej odwiedź inne miejsce.</div>) : (<div className='movie__info__overviewDesc '>{movieData.overview.length > 240 ? (<div>{isShowMore ? (`${movieData.overview}`) : (`${movieData.overview.slice(0, 240)}...`)}<span className="movie__info__overviewDesc--showMore ml-20px" onClick={handleShowMore}>{isShowMore ? (`Pokaż mniej`) : (`Pokaż więcej`)}</span></div>) : (<div>{movieData.overview}</div>)}</div>)}
             <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">reżyseria:</span> {movieCreditsCrew.map((movie, index) => (movie.job === "Director" && <div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
             {/*<div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">scenariusz:</span> {movieCreditsCrew.map((movie, index) => (movie.job === "Screenplay" && <div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>*/}
             <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">produkcja:</span> {movieData.production_countries.map((movie, index) => (<div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
@@ -103,6 +105,31 @@ function Movie () {
             
           </div>
         </div>
+
+        <div className='movie__bot--showRwd'>
+          <div className='movie__info--rwd'>
+            <div className='movie__info__imageDesc--rwd'>
+            <div className='movie__info__image--rwd'>
+              <img
+                src={`https://image.tmdb.org/t/p/w300/${movieData.poster_path}`}
+              />
+              </div>
+             
+              {movieData.overview ==="" ? (<div className="movie__info__overviewDesc--rwd">Niestety dla tego filmu nie ma opisu w bazie TMDB (The Movie Data Base). Jeśli chcesz dowiedzieć się więcej odwiedź inne miejsce.</div>) : ( <div className='movie__info__overviewDesc--rwd '>{movieData.overview.length > 240 ? (<div>{isShowMore ? (`${movieData.overview}`) : (`${movieData.overview.slice(0, 240)}...`)}<span className="movie__info__overviewDesc--showMore ml-20px" onClick={handleShowMore}>{isShowMore ? (`Pokaż mniej`) : (`Pokaż więcej`)}</span></div>) : (<div>{movieData.overview}</div>)}</div>)}
+            </div>
+
+            
+            <div className="movie__info__overview--rwd ml-35px">
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-20px">reżyseria:</span> {movieCreditsCrew.map((movie, index) => (movie.job === "Director" && <div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
+            {/*<div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-10px">scenariusz:</span> {movieCreditsCrew.map((movie, index) => (movie.job === "Screenplay" && <div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>*/}
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-20px">produkcja:</span> {movieData.production_countries.map((movie, index) => (<div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-20px">gatunki:</span> {movieData.genres.map((movie, index) => (<div className="movie__info__overview__element--next" key={index}>{movie.name}<span className="next"> &nbsp;/&nbsp; </span></div>))}</div>
+            <div className="movie__info__overview__element"> <span className="movie__info__overview__element--text mr-20px">premiera:</span> {`${movieData.release_date.slice(8,10)} ${months[movieData.release_date.slice(5,7)-1]} ${movieData.release_date.slice(0,4)}`}</div>
+            </div>
+            
+          </div>
+        </div>
+
       </div>
     )
   else return <div></div>
