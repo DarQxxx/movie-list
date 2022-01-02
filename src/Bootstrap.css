@@ -12,9 +12,17 @@
 .ml-5px{
     margin-left: 5px;
 }
+
+.ml-15px{
+    margin-left: 15px;
+}
 .ml-35px{
     margin-left: 35px;
 }
 .ml-30px{
     margin-left: 30px;
+}
+
+.mr-10px{
+    margin-right: 10px;
 }

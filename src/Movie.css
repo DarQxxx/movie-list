@@ -155,3 +155,40 @@
   .movie__info__overview__element--next:last-child > span {
     display: none;
   }
+
+  @media (max-width: 992px){
+
+    .movie__top {
+      height: 437px;
+    }
+    
+    .movie__bg {
+      height: 437px;
+      width: 100%;
+      opacity: 90%;
+    }
+    
+    .movie__bg::after {
+      height: 437px;
+    }
+    
+    .movie__desc {
+      width: 100%;
+      padding-left: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .movie__descTitle {
+      font-size: 40px;
+      width: 80%;
+    }
+
+    .movie__info__image{
+      margin-left: 30px;
+    }
+    
+  }
+
+  @media (max-width:768px){
+    
+  }

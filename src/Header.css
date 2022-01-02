@@ -10,6 +10,11 @@
     align-items: center;
     padding: 15px;
     justify-content: center;
+    z-index: 1000;
+}
+.header__logo > a{
+    color: white;
+    text-decoration: none;
 }
 
 .header__logo{
@@ -76,4 +81,38 @@
     font-size: 20px;
     height: 20px;
     margin-right: 10px;
+}
+
+.header__rwd--show{
+    display: none;
+}
+
+
+
+@media (max-width: 1200px){
+.header__rwd--hide{
+display: none;
+}
+.header__rwd--show{
+    display: flex;
+}
+
+.header{
+    justify-content: space-between;
+}
+
+.header__logo{
+    padding-left: 34px;
+}
+
+.header__iconsRwd{
+    padding-right: 34px;
+    font-size: 22px;
+    align-items: center;
+}
+.header__iconsRwdLog{
+    margin-right: 10px;
+}
+
+
 }
