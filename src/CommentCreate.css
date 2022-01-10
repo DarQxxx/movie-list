@@ -1,0 +1,18 @@
+.commentCreate{
+    width: 965px;
+    margin: auto;
+}
+
+
+
+
+.commentCreate__input{
+width: 100%;
+border: 1px solid rgb(199, 199, 199);
+padding: 10px 20px;
+outline: none;
+}
+
+
+
+

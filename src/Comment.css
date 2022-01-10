@@ -1,0 +1,66 @@
+.comment{
+    width: 605px;
+    margin: auto;
+ 
+}
+
+.comment__inside{
+    width: 100%;
+    min-height: 60px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.comment__inside__profile{
+    display: flex;
+    align-items: center;
+    margin: 15px 20px 10px 20px;
+
+}
+
+.comment__inside__profileDateAndName{
+    margin-left: 20px;
+}
+
+.comment__inside__profileDate{
+    font-size: 13px;
+    color: rgb(107, 107, 107);
+}
+
+
+
+.comment__inside__profileAvatar > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 2px;
+}
+
+.comment__inside__text {
+    font-size: 15px;
+    color: rgb(107, 107, 107);
+    padding: 0 20px;
+}
+
+.comment__inside__bottom{
+    margin: 15px 0 20px 0;
+    padding: 0 20px;
+    color: rgb(107, 107, 107);
+}
+
+.comment__inside__bottom__leftDate{
+font-size: 14px;
+}
+
+.comment__inside__bottom__left, .comment__inside__bottom__leftAnswers,.comment__inside__bottom__leftReactions, .comment__inside__bottom__leftDate {
+    display: flex;
+}
+
+@media (max-width:768px){
+    .comment{
+        width: 100%;
+     
+    }
+
+}
+
