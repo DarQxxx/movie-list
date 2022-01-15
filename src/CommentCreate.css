@@ -1,18 +1,65 @@
 .commentCreate{
-    width: 965px;
+    width: 605px;
     margin: auto;
+    display: flex;
+    margin-bottom: 40px;
 }
-
-
-
 
 .commentCreate__input{
+    width: 100%;
+position: relative;
+
+}
+
+
+.commentCreate__input--textarea{
 width: 100%;
-border: 1px solid rgb(199, 199, 199);
+height: auto;
+transition: border 0.3s;
 padding: 10px 20px;
-outline: none;
+border: none;
+border-bottom: solid 2px #e8e8e8;
+position: relative;
+
+outline: 0 !important;
+box-shadow: none; 
+resize: none;
+overflow: visible;
+
+}
+
+.commentCreate__input--textarea:focus{
+    transition: border 0.3s;
+    border-bottom: solid 2px #ffe711;
 }
 
 
 
 
+
+.commentCreate__input__icon{
+    position: absolute;
+    right: -40px;
+    bottom: 10px;
+}
+.commentCreate__input__icon{
+    color: #a8a8a8;
+    transition: all 0.3s;
+}
+.commentCreate__input--textarea:focus + .commentCreate__input__icon{
+    color: #d4c10e;
+    transition: all 0.3s;
+}
+
+.commentCreate__input__icon:hover{
+    cursor: pointer;
+}
+
+[contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block;
+    opacity: 0.5;
+  }
+
+  
