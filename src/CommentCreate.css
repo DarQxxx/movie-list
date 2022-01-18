@@ -3,7 +3,13 @@
     margin: auto;
     display: flex;
     margin-bottom: 40px;
+    justify-content: end;
 }
+
+.commentCreate__add{
+    cursor:pointer
+}
+
 
 .commentCreate__input{
     width: 100%;

@@ -4,7 +4,7 @@ import "./Baner.css"
 import useAxiosAttach from './Hooks/useAxiosAttach'
 import "./Bootstrap.css"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 function Baner() {
     const [page, setPage] = useState(1)
@@ -14,6 +14,7 @@ function Baner() {
     const [isClicked, setIsClicked] = useState(false)
     const [actualMovieId, setActualMovieId] = useState(null)
     const [actualMovieData, setActualMovieData] = useState([])
+
 
     
     useEffect(() => {

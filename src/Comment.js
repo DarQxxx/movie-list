@@ -1,15 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Comment.css'
 import './Bootstrap.css'
 import { FaRegCommentAlt, FaRegThumbsUp, FaRegThumbsDown } from 'react-icons/fa'
-export default function Comment () {
+import { getAnything } from './firebase'
+export default function Comment ({params}) {
+  const [comments, setComments] = useState([])
+  console.log(params.movieId)
+
+  useEffect(() => {
+    //setIsLoading({ loading1: true, loading2: true })
+
+      //Ściąganie wiadomości z użytkownikiem
+    const updateMessages = getAnything(params.movieId)
+      .orderBy('createdAt')
+      .onSnapshot(querySnapshot => {
+        const items = []
+        querySnapshot.forEach(doc => {
+          items.push(doc.data())
+        })
+
+        
+        setComments(items)
+        //setIsLoading({ loading1: false, loading2: isLoading.loading2 })
+      })
+      // Wyłączenie nasłuchiwania wiadomości z konkretnym użytkownikiem
+    return () => {
+      updateMessages()
+    }
+  }, [params.movieId])
+
+  console.log(comments)
+
   return (
     <div className='comment'>
       <div className='comment__inside'>
         <div className='comment__inside__profile'>
           <div className='comment__inside__profileAvatar'>
             <img
-              src='https://i.pinimg.com/736x/c7/a0/4a/c7a04a031ed8341798792dde36ff47e2.jpg'
+              src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT593SIoiWBEUW1HgK4FNfdz4fs9WkhwOr-eg&usqp=CAU`}
               alt='User avatar'
             />
           </div>

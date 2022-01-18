@@ -64,7 +64,6 @@ function Movie () {
     setIsShowMore(!isShowMore)
   }
 
-  console.log(movieData)
 
   if (
     movieData !== null &&
@@ -298,9 +297,8 @@ function Movie () {
         </div>
         <div className='movie__comments'>
           <CommentCreate />
-          <Comment />
-          <Comment />
-          <Comment />
+          <Comment params = {params}/>
+
         </div>
       </div>
     )

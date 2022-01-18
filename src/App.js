@@ -7,8 +7,28 @@ import {
 } from "react-router-dom";
 import Movie from './Movie';
 import Header from './Header'
+import { useDispatch } from 'react-redux';
+import { dataAction } from './actions';
+import { useEffect } from 'react';
+import firebase from 'firebase/compat/app';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        dispatch(
+          dataAction({ name: user.displayName, url: user.photoURL, email: user.email })
+        )
+      } else {
+        dispatch(
+          dataAction({ name: null, url: null, email: null })
+        )
+
+      }
+    })
+  }, [])
 
   return (
 

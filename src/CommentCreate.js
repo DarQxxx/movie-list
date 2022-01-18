@@ -18,7 +18,7 @@ export default function CommentCreate () {
             
           }}
         >
-          Dodaj komentarz
+          Dodaj komentarz...
         </div>
       )}
     {isReply && (
