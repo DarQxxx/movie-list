@@ -3,11 +3,17 @@
     margin: auto;
     display: flex;
     margin-bottom: 40px;
-    justify-content: end;
 }
 
 .commentCreate__add{
-    cursor:pointer
+    margin-left: 20px;
+    
+    color: rgb(107, 107, 107);
+
+}
+.commentCreate__addComment:hover{
+    cursor: pointer;
+    color: black;
 }
 
 
@@ -68,4 +74,12 @@ overflow: visible;
     opacity: 0.5;
   }
 
-  
+.commentCreate__login{
+border-bottom: 1px solid rgb(151, 151, 151);
+}
+
+.commentCreate__login:hover{
+    color: black;
+    border-bottom: 1px solid black;
+    cursor:pointer;
+}

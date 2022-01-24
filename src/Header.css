@@ -61,7 +61,9 @@
     padding: 10px;
     align-items: center;
 }
-
+.header__fbLog:hover{
+    cursor:pointer;
+}
 .header__fbLogIcon{
     font-size: 20px;
     height: 20px;
@@ -75,6 +77,11 @@
     justify-content: center;
     padding: 10px;
     align-items: center;
+}
+
+.header__Logout{
+    width : 400px;
+    margin-left: 25px;
 }
 
 .header__LogIcon{

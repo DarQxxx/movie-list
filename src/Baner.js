@@ -109,5 +109,5 @@ function Baner() {
     else return (<div></div>)
 
 }
-//https://image.tmdb.org/t/p/w500/3eVpNCMoi3C8lA0F0n2retnwvCK.jpg
+
 export default Baner 

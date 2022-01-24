@@ -7,12 +7,14 @@ import { FaStar, FaUserAlt } from 'react-icons/fa'
 
 import CommentCreate from './CommentCreate'
 import Comment from './Comment'
+import { getCol } from './firebase'
 
 function Movie () {
   const params = useParams()
   const [movieData, setMovieData] = useState(null)
   const [movieCreditsCrew, setMovieCreditsCrew] = useState(null)
   const [movieCreditsCast, setMovieCreditsCast] = useState(null)
+  const [comments, setComments] = useState([])
   const months = [
     'stycznia',
     'lutego',
@@ -54,11 +56,32 @@ function Movie () {
           console.log(err)
         })
     }
-
+    console.log()
     return () => {
       setIsShowMore(false)
     }
   }, [])
+
+  useEffect(() => {
+    //setIsLoading({ loading1: true, loading2: true })
+    const updateMessages = getCol(params.movieId).orderBy('createdAt')
+     // .orderBy('createdAt')
+      .onSnapshot(querySnapshot => {
+        const items = []
+        querySnapshot.forEach(doc => {
+          items.push(doc.data())
+        })
+
+        
+        setComments(items)
+        //setIsLoading({ loading1: false, loading2: isLoading.loading2 })
+      })
+      // Wyłączenie nasłuchiwania wiadomości z konkretnym użytkownikiem
+    return () => {
+      updateMessages()
+    }
+  }, [params.movieId])
+
 
   function handleShowMore () {
     setIsShowMore(!isShowMore)
@@ -296,8 +319,8 @@ function Movie () {
           </div>
         </div>
         <div className='movie__comments'>
-          <CommentCreate />
-          <Comment params = {params}/>
+          <CommentCreate params = {params} comments={comments}/>
+        <Comment params = {params} comments = {comments}/>
 
         </div>
       </div>

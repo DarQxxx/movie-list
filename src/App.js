@@ -8,7 +8,7 @@ import {
 import Movie from './Movie';
 import Header from './Header'
 import { useDispatch } from 'react-redux';
-import { dataAction } from './actions';
+import { dataAction, loginAction, logoutAction } from './actions';
 import { useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 
@@ -21,11 +21,14 @@ function App() {
         dispatch(
           dataAction({ name: user.displayName, url: user.photoURL, email: user.email })
         )
+        dispatch(loginAction())
+        
       } else {
         dispatch(
           dataAction({ name: null, url: null, email: null })
         )
-
+        dispatch(logoutAction())
+        
       }
     })
   }, [])
