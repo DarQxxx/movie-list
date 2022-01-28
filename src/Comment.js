@@ -1,25 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Comment.css'
 import './Bootstrap.css'
 import { FaRegCommentAlt, FaRegThumbsUp, FaRegThumbsDown } from 'react-icons/fa'
 
 export default function Comment (params) {
 
-
+  
   return (
     <div className='comment'>
       {params.comments.map ((comment, index) => (
-      <div className='comment__inside' key={index}>
-        <div className='comment__inside__profile'>
+      <div  key={index}>
+        {comment.createdAt !== null && <div className='comment__inside'>
+          <div className='comment__inside__profile'>
           <div className='comment__inside__profileAvatar'>
             <img
               src={comment.img}
               alt='User avatar'
             />
           </div>
+          
           <div className='comment__inside__profileDateAndName'>
           <div className='comment__inside__profileName'>{comment.name}</div>
-          <div className='comment__inside__profileDate'>{comment.date}</div>
+          <div className='comment__inside__profileDate'>{ `${String(comment.createdAt.toDate().getDate()).padStart(2, '0')}.${String(comment.createdAt.toDate().getMonth() + 1).padStart(2, '0')}.${comment.createdAt.toDate().getFullYear()} o ${comment.createdAt.toDate().getHours()}:${comment.createdAt.toDate().getMinutes()}`}</div>
           </div>
         </div>
         <div className='comment__inside__text'>{comment.comment}</div>
@@ -48,6 +50,10 @@ export default function Comment (params) {
             </div>
           </div>
         </div>
+          
+          
+          </div>}
+
       </div>
       ))}
     </div>

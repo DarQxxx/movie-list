@@ -60,11 +60,11 @@ function Movie () {
     return () => {
       setIsShowMore(false)
     }
-  }, [])
+  }, [params.movieId])
 
   useEffect(() => {
     //setIsLoading({ loading1: true, loading2: true })
-    const updateMessages = getCol(params.movieId).orderBy('createdAt')
+    const updateMessages = getCol(params.movieId).orderBy('createdAt', "desc")
      // .orderBy('createdAt')
       .onSnapshot(querySnapshot => {
         const items = []

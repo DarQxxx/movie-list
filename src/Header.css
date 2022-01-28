@@ -6,7 +6,7 @@
     flex: 1;
     color: white;
     background-color: black;
-
+    font-family: Roboto;
     align-items: center;
     padding: 15px;
     justify-content: center;
@@ -22,6 +22,12 @@
     letter-spacing: -2px;
     font-weight: 500;
 }
+.header__searchSection{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+}
 .header__input{
     width: 440px;
     text-align: right;
@@ -32,7 +38,49 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: relative;
 }
+
+.header__input__list{
+top: 40px;
+width: 440px;
+margin-left: 25px;
+
+position: absolute;
+
+
+}
+.header__input__listContent{
+    background-color: white;
+color: black;
+display: flex;
+    
+    border-top: 1px solid grey;
+    padding: 5px;
+    transition: all 0.2s;
+    min-height: 138px;
+}
+.header__input__listDesc{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-around;
+}
+.header__input__listDesc--title{
+    font-weight: 600;
+    font-size: 25px;
+}
+.header__input__listContent:hover{
+    color: rgb(255, 217, 0);
+    background-color: black;
+}
+
+
+.header__input__list--underline > a {
+    text-decoration: none;
+    
+}
+
 
 
 .header__input > input {
@@ -82,6 +130,7 @@
 .header__Logout{
     width : 400px;
     margin-left: 25px;
+    text-align: right;
 }
 
 .header__LogIcon{
