@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import "./Header.css"
 import "./Bootstrap.css"
-import {FaSignInAlt, FaGoogle, FaSearch, FaBars} from "react-icons/fa";
+import {FaSignInAlt, FaGoogle, FaSearch, FaBars, FaRegTimesCircle} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import {login, logout} from './firebase.js'
 import { useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ function Header() {
     const [searchValue, setSearchValue] = useState(null);
     const [isHidden, setIsHidden] = useState(true);
     const focusRef = useRef(null)
+    const [isMenu, setIsMenu] = useState(false);
     
     function handleSearch(){
       if (searchBarRef.current.value.replace(/\s/g, '').length===0)
@@ -50,7 +51,7 @@ function Header() {
           else
           axios
           .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=c14c50d17fa9e6d17b2f1d911564ecd4&query=${searchBarRef.current.value}&language=pl`
+            `https://api.themoviedb.org/3/search/movie?sort_by=vote_average.desc&api_key=c14c50d17fa9e6d17b2f1d911564ecd4&query=${searchBarRef.current.value}&language=pl`
           )
           .then(res => {
             setSearchMovies(res.data.results.slice(0,3))
@@ -107,11 +108,16 @@ function Header() {
             </div>
            {!isLogged && <div className="header__fbLog ml-25px header__rwd--hide" onClick={()=>{login()}}><div className="header__fbLogIcon"><FaGoogle/></div>Zaloguj się kontem Google</div>} 
            {!isLogged &&<div className="header__Log ml-10px header__rwd--hide"><div className="header__LogIcon"><FaSignInAlt/></div>Zaloguj się</div>}
-           {isLogged && <div className="header__Logout header__rwd--hide" onClick={() => {logout()}}>Wyloguj</div>}
+           {isLogged && <div className="header__Logout header__rwd--hide" onClick={() => {logout()}}><Link to ="/">Wyloguj</Link></div>}
             <div className="header__iconsRwd header__rwd--show">
                 <div className="header__iconsRwdLog"><FaSignInAlt/></div>
-                <div className="header__iconsRwdBurger"><FaBars/></div>
+                <div className="header__iconsRwdBurger" onClick={()=> {setIsMenu(!isMenu)}}>{isMenu? (<FaRegTimesCircle/>): (<FaBars/>) }</div>
                 </div>
+              <div style={{top: isMenu? "0":"-100vh"}} className="mobileMenu header__rwd--show">
+
+                  
+            
+              </div>
 
         </div>
     )

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Comment.css'
 import './Bootstrap.css'
 import { FaRegCommentAlt, FaRegThumbsUp, FaRegThumbsDown } from 'react-icons/fa'
+import Answer from './components/Answer'
 
 export default function Comment (params) {
+  function handleAnswer(){
 
+  }
   
   return (
     <div className='comment'>
@@ -44,8 +47,8 @@ export default function Comment (params) {
               <div className='comment__inside__bottom__icons ml-5px'>
                 <FaRegThumbsDown />
               </div>
-              <div className='comment__inside__bottom__leftDate ml-10px'>
-              Odpowiedz
+              <div onClick={handleAnswer} className='comment__inside__bottom__leftDate ml-10px'>
+              <Answer/>
             </div>
             </div>
           </div>
@@ -53,9 +56,10 @@ export default function Comment (params) {
           
           
           </div>}
-
+          
       </div>
       ))}
+    
     </div>
   )
 }
