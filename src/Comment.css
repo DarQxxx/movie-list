@@ -57,6 +57,7 @@
 .comment__answer{
     transition: all 0.2s ;
     user-select: none;
+    width: fit-content;
 }
 .comment__answer:hover {
   cursor: pointer;
@@ -79,7 +80,7 @@
   box-shadow: none; 
   resize: none;
   overflow: visible;
-    border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #e8e8e8;
 
 }
 .commentCreate__input--position {
@@ -87,7 +88,7 @@
   width: 505px !important;
 }
 .comment__answer__input--textarea:focus {
-  border-bottom: 2px solid #e8e8e8;
+  border-bottom: 2px solid #fdf07a;
 }
 .comment__answerImg {
   width: 34px;

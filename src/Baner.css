@@ -141,6 +141,7 @@ z-index: 100;
     overflow: hidden;
     user-select: none;
     text-overflow: ellipsis;
+    font-weight: 600;
 }
 
 .baner__topMoviesImgs__bottomTitle > a{

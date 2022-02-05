@@ -1,16 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import './Comment.css'
-import './Bootstrap.css'
-import {  FaRegThumbsUp, FaRegThumbsDown, FaRegCommentAlt } from 'react-icons/fa'
-import Answer from './components/Answer'
-import AnsweredComment from './AnsweredComment'
+import React, { useEffect, useState } from 'react';
+import "./Comment.css"
+import Answer from './components/Answer';
+import { getCol } from './firebase';
+import {  FaRegThumbsUp, FaRegThumbsDown, FaRegCommentAlt } from 'react-icons/fa';
 
-export default function Comment (params) {
+export default function AnsweredComment(params) {
 
-  
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        //setIsLoading({ loading1: true, loading2: true })
+
+        const updateMessages = getCol(params.movieId).doc(params.commentId.toString()).collection("answers").onSnapshot(querySnapshot => {
+     // .orderBy('createdAt')
+
+        const items = []
+        querySnapshot.forEach(doc => {
+          items.push(doc.data())
+        })
+
+        
+        setComments(items)
+        //setIsLoading({ loading1: false, loading2: isLoading.loading2 })
+      })
+      // Wyłączenie nasłuchiwania wiadomości z konkretnym użytkownikiem
+    return () => {
+      updateMessages()
+    }
+  }, [params.movieId])
+  console.log(comments)
   return (
-    <div className='comment'>
-      {params.comments.map ((comment, index) => (
+    <div>
+     {comments.map ((comment, index) => (
       <div  key={index}>
         {comment.createdAt !== null && <div className='comment__inside'>
           <div className='comment__inside__profile'>
@@ -54,13 +75,13 @@ export default function Comment (params) {
           </div>
           
         </div>
-        <AnsweredComment commentId={comment.id} movieId={params.params.movieId}/>
+        
         
           </div>}
           
       </div>
       ))}
-    
     </div>
   )
+
 }
