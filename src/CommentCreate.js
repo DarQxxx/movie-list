@@ -25,7 +25,8 @@ export default function CommentCreate (params) {
           img: userProps.url,
           name: userProps.name,
           likes: 0,
-          unlikes: 0
+          unlikes: 0,
+          answers: 0
         })
 
       setCommentValue('')

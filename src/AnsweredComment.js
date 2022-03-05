@@ -28,12 +28,12 @@ export default function AnsweredComment(params) {
       updateMessages()
     }
   }, [params.movieId])
-  console.log(comments)
+  //console.log(comments)
   return (
-    <div>
+    <div className="answered_comment">
      {comments.map ((comment, index) => (
       <div  key={index}>
-        {comment.createdAt !== null && <div className='comment__inside'>
+        {comment.createdAt !== null && <div className='comment__inside comment__inside--noborder'>
           <div className='comment__inside__profile'>
           <div className='comment__inside__profileAvatar'>
             <img
@@ -50,14 +50,7 @@ export default function AnsweredComment(params) {
         <div className='comment__inside__text'>{comment.comment}</div>
         <div className='comment__inside__bottom'>
           <div className='comment__inside__bottom__left'>
-            <div className='comment__inside__bottom__leftAnswers'>
-              {' '}
-              10
-              <div className='comment__inside__bottom__icons ml-5px'>
-              <FaRegCommentAlt />
-                
-              </div>
-            </div>
+
 
             <div className='comment__inside__bottom__leftReactions ml-10px'>
               {comment.likes}
@@ -69,7 +62,7 @@ export default function AnsweredComment(params) {
                 <FaRegThumbsDown />
               </div>
               <div className='comment__inside__bottom__leftDate ml-10px'>
-              <Answer/>
+              <Answer movieId={params.movieId} commentId={params.commentId}/>
             </div>
             </div>
           </div>

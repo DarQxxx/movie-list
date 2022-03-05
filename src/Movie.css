@@ -158,6 +158,36 @@
   .movie__bot--showRwd{
    display: none;   
   }
+  .movie__actors{
+    justify-content: center;
+    text-align: center;
+    width: 956px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .movie__actors--position{
+    display: flex;
+    width: 50%;
+    text-align: left;
+    padding-top: 50px;
+  }
+  .movie__actors__image > img{
+    width: 140px;
+    height: 200px;
+  }
+.movie__actors__star{
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+  .movie__actors__starRole{
+  font-weight: 600;
+    font-size: 19px;
+    padding-bottom: 10px;
+}
 
 
 
@@ -282,4 +312,5 @@
 
 .movie__comments{
   margin-top: 50px;
+  padding-bottom: 100px;
 }

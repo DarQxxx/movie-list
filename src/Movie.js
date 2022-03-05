@@ -30,7 +30,6 @@ function Movie () {
     'grudnia'
   ]
   const [isShowMore, setIsShowMore] = useState(false)
-
   useEffect(() => {
     if (params.movieId !== null) {
       axios
@@ -61,32 +60,30 @@ function Movie () {
       setIsShowMore(false)
     }
   }, [params.movieId])
-
+  console.log(movieCreditsCast)
   useEffect(() => {
     //setIsLoading({ loading1: true, loading2: true })
-    const updateMessages = getCol(params.movieId).orderBy('createdAt', "desc")
-     // .orderBy('createdAt')
+    const updateMessages = getCol(params.movieId)
+      .orderBy('createdAt', 'desc')
+      // .orderBy('createdAt')
       .onSnapshot(querySnapshot => {
         const items = []
         querySnapshot.forEach(doc => {
           items.push(doc.data())
         })
 
-        
         setComments(items)
         //setIsLoading({ loading1: false, loading2: isLoading.loading2 })
       })
-      // Wyłączenie nasłuchiwania wiadomości z konkretnym użytkownikiem
+    // Wyłączenie nasłuchiwania wiadomości z konkretnym użytkownikiem
     return () => {
       updateMessages()
     }
   }, [params.movieId])
 
-
   function handleShowMore () {
     setIsShowMore(!isShowMore)
   }
-
 
   if (
     movieData !== null &&
@@ -220,6 +217,7 @@ function Movie () {
           </div>
         </div>
 
+
         <div className='movie__bot--showRwd'>
           <div className='movie__info--rwd'>
             <div className='movie__info__imageDesc--rwd'>
@@ -318,10 +316,24 @@ function Movie () {
             </div>
           </div>
         </div>
+        <div className="movie__actors">
+        {movieCreditsCast.slice(0, 8).map((cast, index) => (
+          <div className='movie__actors--position' key={index}>
+            <div className='movie__actors__image'>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+              ></img>
+            </div>
+            <div className='movie__actors__star'>
+              <div className='movie__actors__starRole'>{cast.character}</div>
+              <div className='movie__actors__starName'>{cast.name}</div>
+            </div>
+          </div>
+        ))}
+        </div>
         <div className='movie__comments'>
-          <CommentCreate params = {params} comments={comments}/>
-        <Comment params = {params} comments = {comments}/>
-
+          <CommentCreate params={params} comments={comments} />
+          <Comment params={params} comments={comments} />
         </div>
       </div>
     )

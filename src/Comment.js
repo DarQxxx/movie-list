@@ -6,7 +6,7 @@ import Answer from './components/Answer'
 import AnsweredComment from './AnsweredComment'
 
 export default function Comment (params) {
-
+  const [isShown, setIsShown] = useState(false)
   
   return (
     <div className='comment'>
@@ -31,8 +31,8 @@ export default function Comment (params) {
           <div className='comment__inside__bottom__left'>
             <div className='comment__inside__bottom__leftAnswers'>
               {' '}
-              10
-              <div className='comment__inside__bottom__icons ml-5px'>
+              {comment.answers}
+              <div className='comment__inside__bottom__icons ml-5px pointer' onClick={()=>{setIsShown(!isShown)}}>
               <FaRegCommentAlt />
                 
               </div>
@@ -48,13 +48,13 @@ export default function Comment (params) {
                 <FaRegThumbsDown />
               </div>
               <div className='comment__inside__bottom__leftDate ml-10px'>
-              <Answer/>
+              <Answer commentId={comment.id} movieId={params.params.movieId}/>
             </div>
             </div>
           </div>
           
         </div>
-        <AnsweredComment commentId={comment.id} movieId={params.params.movieId}/>
+        {isShown && <AnsweredComment commentId={comment.id} movieId={params.params.movieId}/>}
         
           </div>}
           
